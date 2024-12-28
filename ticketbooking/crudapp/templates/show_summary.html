@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Summary</title>
+</head>
+<body>
+
+  <h1>Show Summary</h1>
+
+  {% if shows %}
+    <table border="1" cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Show ID</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Total Tickets Booked</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for show in shows %}
+          <tr>
+            <td>{{ show.stage_event.name }}</td> <!-- Display event name here -->
+            <td>{{ show.id }}</td>
+            <td>{{ show.start_time }}</td>
+            <td>{{ show.end_time }}</td>
+            <td>{{ show.num_of_tickets|default:0 }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No shows available.</p>
+  {% endif %}
+
+</body>
+</html>
